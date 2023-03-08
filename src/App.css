@@ -13,12 +13,27 @@
 	--light: #98C1D9;
 	--decorator: #DB93B0;
 	--success: #88D18A;
+	--app-black: #0e0c0c;
+	--app-red: #ca0808;
 }
 
 *{
 	transition: 0.5s all;
 	font-family: 'Outfit', sans-serif;
 }
+
+::placeholder {
+	color: var(--app-black);
+	opacity: 1;
+  }
+  
+  :-ms-input-placeholder {
+	color: var(--app-black);
+  }
+  
+  ::-ms-input-placeholder {
+	color: var(--app-black);
+  }
 
 .flex_box{
   display: flex;
@@ -28,6 +43,35 @@
 .flex_box__input,
 .flex_box__btn{
 	margin: 0px 10px;
+}
+.flex_box.to_start{
+	justify-content: flex-start;
+}
+
+
+.flex_box.input_group{
+	padding: 20px;
+}
+
+.flex_box.flex_box.input_group input,
+.flex_box.flex_box.input_group select{
+	margin: 0px 10px;
+	padding: 0.5em;
+	color: var(--app-black);
+	border: 1px solid var(--dark-secondary);
+	outline: none;
+}
+
+.flex_box.flex_box.input_group select{
+	background: transparent;
+}
+
+.flex_box__input-small{
+	max-width: 5em;
+}
+
+.error_message h4{
+	color: var(--app-red);
 }
 
 .btn{

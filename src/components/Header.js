@@ -7,15 +7,14 @@ export default class Header extends React.Component {
 
     super(props);
     this.name = props.name;
-	this.state = {
-		modal_shown: false,
-	}
-	this.closeModal = this.closeModal.bind(this)
+    this.state = {
+      modal_shown: false,
+    }
+	  this.closeModal = this.closeModal.bind(this)
     
   }
 
   showModal(){
-
 	  this.setState({
 		  modal_shown: true
 	  })
@@ -23,23 +22,25 @@ export default class Header extends React.Component {
   }
 
   closeModal() {
+    
     this.setState({
-		modal_shown: false
+		  modal_shown: false
     })
+
   }
 
   render() {
 
-	const { modal_shown } = this.state;
-	var header = this,
-		modal = '';
+    const { modal_shown } = this.state;
+    var header = this,
+      modal = '';
 
-	if(modal_shown){
-		modal = <OptionModal closeModal = {this.closeModal} /> 
-	}
-	else{
-		modal = ''
-	}
+    if(modal_shown){
+      modal = <OptionModal closeModal = {this.closeModal} /> 
+    }
+    else{
+      modal = ''
+    }
 
     return (
         <div>      

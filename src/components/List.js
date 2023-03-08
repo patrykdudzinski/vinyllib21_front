@@ -38,7 +38,6 @@ export default class List extends keyCodeHandler{
 	componentDidUpdate(){
 		// console.log(this.state.active_row)
 	//   this.getElements();
-	//   console.log(this.state)
 	//   this.forceUpdate();
 	}
 	
