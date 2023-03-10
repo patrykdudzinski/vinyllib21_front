@@ -17,3 +17,9 @@ export async function ajaxAction(url = '', data = {}, method = 'GET') {
     return response.json();
 
 }
+
+export async function setAttr(key, event, component){
+    component.setState({
+        [key] : event.target.value
+    })
+}

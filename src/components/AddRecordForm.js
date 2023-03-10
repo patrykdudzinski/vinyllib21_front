@@ -78,7 +78,7 @@ export default class AddRecordForm extends React.Component {
             <section id="add_genre_section" 
                 class="modal_body__section">
                     
-                    <h3 class="modal_body__header">Dodaj wydawnictwo</h3>
+                    <h3 class="modal_body__header">Dodaj winyla</h3>
 
                     <div class = "flex_box to_start input_group">
                         <input type="text" 

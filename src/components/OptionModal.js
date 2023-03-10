@@ -1,6 +1,7 @@
 
 import React from 'react';
 import AddRecordForm from './AddRecordForm';
+import AddLabelForm from './AddLabelForm';
 
 import { ajaxAction } from '../Mixins';
 
@@ -54,6 +55,9 @@ export default class OptionModal extends React.Component {
         if(name == 'record'){
             return <AddRecordForm genres_list = {this.state.genres_list} 
                                     labels_list = {this.state.labels_list} />
+        }
+        else if(name == 'record_label'){
+            return <AddLabelForm labels_list = {this.state.labels_list} />
         }
         else{
             return '';
