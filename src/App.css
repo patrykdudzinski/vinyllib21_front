@@ -37,7 +37,8 @@
 
 .flex_box{
   display: flex;
-  justify-content: space-around;
+  padding: 5px 30px;
+  justify-content: space-between;
 }
 
 .flex_box__input,
@@ -72,6 +73,10 @@
 
 .error_message h4{
 	color: var(--app-red);
+}
+
+.success_message h4{
+	color: var(--success);
 }
 
 .btn{
@@ -109,7 +114,8 @@
 }
 
 .header_toolbar{
-	padding-top: 20px;
+	align-items: center;
+	padding: 20px 180px;
 }
 
 .header_toolbar input{
@@ -121,6 +127,7 @@
 	color: var(--dark-secondary);
 	outline: none;
 }
+
 
 
 .App-link {
@@ -172,4 +179,17 @@ table tbody tr.active{
 
 .modal_btn:hover{
 	background: var(--success);
+}
+
+.table__list{
+	padding: 10px 200px;
+}
+
+.table__list tbody tr:hover{
+	background-color: var(--decorator);
+}
+
+.table__list td,
+.table__list th{
+	padding: 10px;
 }

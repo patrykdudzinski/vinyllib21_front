@@ -1,5 +1,6 @@
 import React from 'react';
 import ErrorMessage from './ErrorMessage';
+import SuccessMessage from './SuccessMessage';
 import { ajaxAction } from '../Mixins';
 
 export default class AddRecordForm extends React.Component {
@@ -15,7 +16,8 @@ export default class AddRecordForm extends React.Component {
             genre: '',
             label: '',
             year: '',
-            error: false
+            error: false,
+            success: false
         }
     }
 
@@ -35,7 +37,10 @@ export default class AddRecordForm extends React.Component {
                 }, 
                 'POST'
             ).then(data => {
-                console.log(data)
+                self.setState({
+                    success: true,
+                    error: false
+                })
             })
             .catch(err => {
                 self.setState({
@@ -65,13 +70,17 @@ export default class AddRecordForm extends React.Component {
         }
 
         const is_error = this.state.error;
-        let error_msg;
+        const is_success = this.state.success;
+        let response_msg;
 
         if (is_error) {      
-            error_msg = <ErrorMessage message = "Wystąpił błąd. Spróbuj ponownie." />;    
-        } 
+            response_msg = <ErrorMessage message = "Wystąpił błąd. Spróbuj ponownie." />;    
+        }
+        else if(is_success){
+            response_msg = <SuccessMessage message = "Gratulacje! Zapisano poprawnie album." />;    
+        }
         else {      
-            error_msg = "";    
+            response_msg = "";    
         }
 
         return(
@@ -128,7 +137,7 @@ export default class AddRecordForm extends React.Component {
                                 onClick={this.addRecord.bind(this)}> Zapisz </button>
 
                     </div>
-                    {error_msg}
+                    {response_msg}
                 </section>
         );
 

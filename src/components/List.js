@@ -54,7 +54,7 @@ export default class List extends keyCodeHandler{
     return (
 		<div>      
 			<h2> Lista winyli </h2>
-			<table>
+			<table class="table__list">
 				<thead>
 					<tr>
 						<th>L.p.</th>
@@ -69,7 +69,7 @@ export default class List extends keyCodeHandler{
 					{this.state.list.map(function(object, i){
 						return <ObjectRow lp={i}
 										active_row = {active_row}
-										name={object.record_name} 
+										name={object.name} 
 										artist={object.artist}
 										year={object.year}
 										label={object.record_label}

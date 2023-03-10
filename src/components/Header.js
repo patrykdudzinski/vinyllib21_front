@@ -53,7 +53,7 @@ export default class Header extends React.Component {
                     <button class="flex_box__btn btn primary"> Szukaj </button>
                     <button class="flex_box__btn btn success"> PDF </button>
                 </div>
-                <div class="flex_box__element" onClick={header.showModal.bind(this)} > 
+                <div class="flex_box__element header__btn" onClick={header.showModal.bind(this)} > 
 					<h3>Opcje</h3> 
 				</div>
             </section>
