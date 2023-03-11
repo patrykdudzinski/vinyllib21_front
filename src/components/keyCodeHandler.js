@@ -91,7 +91,7 @@ export default class keyCodeHandler extends React.Component {
      */
     handleAction(event){
         var app = this;
-        console.log(event)
+        // console.log(event)
 
         switch(event.keyCode){
             case 40:

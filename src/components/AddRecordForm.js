@@ -37,6 +37,7 @@ export default class AddRecordForm extends React.Component {
                 }, 
                 'POST'
             ).then(data => {
+                document.querySelector('#find_btn').click();
                 self.setState({
                     success: true,
                     error: false

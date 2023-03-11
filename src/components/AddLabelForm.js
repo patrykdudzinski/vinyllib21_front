@@ -1,5 +1,6 @@
 import React from 'react';
 import ErrorMessage from './ErrorMessage';
+import SuccessMessage from './SuccessMessage';
 import { ajaxAction, setAttr } from '../Mixins';
 
 export default class AddRecordForm extends React.Component {
@@ -10,6 +11,7 @@ export default class AddRecordForm extends React.Component {
         this.state = {
             name: '',
             error: false,
+            success: false,
             error_txt: 'Wystąpił błąd. Spróbuj ponownie.',
             labels_list: props.labels_list,
         }
@@ -46,6 +48,11 @@ export default class AddRecordForm extends React.Component {
                     'POST'
                 ).then(data => {
                     console.log(data)
+                    document.querySelector('#find_btn').click();
+                    self.setState({
+                        error: false,
+                        success: true
+                    })
                 })
                 .catch(err => {
                     self.setState({
@@ -66,17 +73,21 @@ export default class AddRecordForm extends React.Component {
         const { name } = this.state;
 
         const is_error = this.state.error,
-              error_txt = this.state.error_txt;
+              error_txt = this.state.error_txt,
+              is_success = this.state.success;
 
-        let error_msg;
+        let response_msg;
 
         if (is_error) {      
-            error_msg = <ErrorMessage message = {error_txt} />;    
-        } 
-        else {      
-            error_msg = "";    
+            response_msg = <ErrorMessage message = "Wystąpił błąd. Spróbuj ponownie." />;    
         }
-
+        else if(is_success){
+            response_msg = <SuccessMessage message = "Gratulacje! Zapisano poprawnie wydawnictwo." />;    
+        }
+        else {      
+            response_msg = "";    
+        }
+      
         return(
             <section id="add_label_section" 
             class="modal_body__section">
@@ -89,7 +100,7 @@ export default class AddRecordForm extends React.Component {
                         <button class="flex_box__btn btn primary"
                                 onClick={this.setLabel.bind(this)}> Zapisz </button>
                 </div>
-                {error_msg}
+                {response_msg}
             </section>
         )
     }

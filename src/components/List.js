@@ -10,33 +10,19 @@ export default class List extends keyCodeHandler{
     super(props);
     
     this.state = {
-        list: '',
-		ready: false,
+        list: props.list,
+		ready: props.ready,
 		active_row: 0,
     }
-
-  }
-
-  getElements(){
-    var app = this;
-	ajaxAction('http://vinyl.dudzinski.com.pl/api/library', {} )
-    .then(data => {
-		app.setState({
-			list: data,
-			ready: true
-		})
-    });
-
   }
 
 	componentDidMount(){
-		this.getElements()
 		this.keyCodeHandler();
 	}
 
 
 	componentDidUpdate(){
-		// console.log(this.state.active_row)
+		console.log(this.props.list)
 	//   this.getElements();
 	//   this.forceUpdate();
 	}
@@ -46,14 +32,14 @@ export default class List extends keyCodeHandler{
   render() {
 
 	const { elements, is_loading, active_row } = this.state;
-	
-    if (!this.state.ready) {
+	console.log(this.props.ready, this.props.list)
+    if (!this.props.ready) {
       return null;
     }
 
     return (
 		<div>      
-			<h2> Lista winyli </h2>
+			<h2 class="table__heading"> Lista winyli </h2>
 			<table class="table__list">
 				<thead>
 					<tr>
@@ -66,7 +52,7 @@ export default class List extends keyCodeHandler{
 					</tr>
 				</thead>
 				<tbody>
-					{this.state.list.map(function(object, i){
+					{this.props.list.map(function(object, i){
 						return <ObjectRow lp={i}
 										active_row = {active_row}
 										name={object.name} 

@@ -29,6 +29,12 @@ export default class Header extends React.Component {
 
   }
 
+  componentDidUpdate(){
+	//   this.getElements();
+	//   this.forceUpdate();
+	}
+
+
   render() {
 
     const { modal_shown } = this.state;
@@ -49,8 +55,8 @@ export default class Header extends React.Component {
             </header>
             <section class="flex_box header_toolbar">
                 <div class="flex_box__element">
-                    <input type="text" placeholder="Szukaj po atrybucie..." class="flex_box__input" />
-                    <button class="flex_box__btn btn primary"> Szukaj </button>
+                    <input type="text" placeholder="Szukaj po atrybucie..." onChange = {event => header.props.setSearch(event) } class="flex_box__input" />
+                    <button id="find_btn" class="flex_box__btn btn primary" onClick = {header.props.get_list_fn}> Szukaj </button>
                     <button class="flex_box__btn btn success"> PDF </button>
                 </div>
                 <div class="flex_box__element header__btn" onClick={header.showModal.bind(this)} > 
