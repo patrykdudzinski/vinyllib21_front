@@ -125,6 +125,18 @@
 	cursor: pointer;
 }
 
+.header_toolbar.fixed {
+	position: fixed;
+	top: 0px;
+	padding: 5px 180px;
+	max-height: 100px;
+	background: var(--dark_primary);
+	color: white;
+	width: 100vw;
+	display: flex;
+	justify-content: space-evenly;
+  }
+
 .header_toolbar input{
 	min-width: 244px;
 	font-size: 15px;
@@ -145,10 +157,8 @@ table{
 }
 
 table tbody tr.active{
-	background-color: var(--light);
-	color: var(--dark-secondary);
+	background-color: var(--decorator);
 	font-weight: 800;
-	opacity: 0.3;
 }
 
 .app_modal{

@@ -2,9 +2,8 @@
 import React from 'react';
 import AddRecordForm from './AddRecordForm';
 import AddLabelForm from './AddLabelForm';
-
+import AddGenreForm from './AddGenreForm';
 import { ajaxAction } from '../Mixins';
-
 export default class OptionModal extends React.Component {
 
     constructor(props) {
@@ -19,12 +18,16 @@ export default class OptionModal extends React.Component {
 
     getGenresList(){
         var app = this;
+        app.setState({
+            ready: false
+        })
         ajaxAction('http://vinyl.dudzinski.com.pl/api/getGenres', {} )
         .then(data => {
             app.setState({
                 genres_list: data,
             })
         });
+        console.log(app.state.genres_list)
     }
 
     getLabelsList(){
@@ -44,20 +47,35 @@ export default class OptionModal extends React.Component {
 	}
 
 
+    componentDidUpdate(){
+
+    }
+
     changeForm(caller){
         this.setState({
             option: caller.target.id
         })
+        if(caller.target.id == 'record'){
+            this.getGenresList()
+            this.getLabelsList()
+        }
+    }
+
+    componentWillMount() {
+
     }
 
     selectForm(name){
-        
+
         if(name == 'record'){
             return <AddRecordForm genres_list = {this.state.genres_list} 
                                     labels_list = {this.state.labels_list} />
         }
         else if(name == 'record_label'){
             return <AddLabelForm labels_list = {this.state.labels_list} />
+        }
+        else if(name == 'genre'){
+            return <AddGenreForm genres_list = {this.state.genres_list} />
         }
         else{
             return '';
@@ -89,17 +107,18 @@ export default class OptionModal extends React.Component {
                             Dodaj gatunek 
                         </div>
                         
+                        <div id = 'record'
+                            class = "flex_box__element modal_btn" 
+                            onClick = {(param) => this.changeForm(param)} > 
+                            Dodaj płytę 
+                        </div>
+
                         <div id = 'record_label' 
                             class = "flex_box__element modal_btn"
                             onClick = {(param) => this.changeForm(param)} > 
                             Dodaj wydawnictwo 
                         </div>
                         
-                        <div id = 'record'
-                            class = "flex_box__element modal_btn" 
-                            onClick = {(param) => this.changeForm(param)} > 
-                            Dodaj płytę 
-                        </div>
                     </div>
 
                     <div class="app_modal__body">

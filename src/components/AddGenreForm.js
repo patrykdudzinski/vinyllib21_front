@@ -3,7 +3,7 @@ import ErrorMessage from './ErrorMessage';
 import SuccessMessage from './SuccessMessage';
 import { ajaxAction, setAttr } from '../Mixins';
 
-export default class AddRecordForm extends React.Component {
+export default class AddGenreForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class AddRecordForm extends React.Component {
             error: false,
             success: false,
             error_txt: 'Wystąpił błąd. Spróbuj ponownie.',
-            labels_list: props.labels_list,
+            genres_list: props.genres_list,
         }
     }
 
@@ -27,21 +27,21 @@ export default class AddRecordForm extends React.Component {
 
     setLabel(){
         let self = this,
-            found_labels = self.state.labels_list.filter(element => element.name == self.state.name);
+            found_genres = self.state.genres_list.filter(element => element.name == self.state.name);
 
         if(self.state.name.length == 0){
-            self.setError('Pusta nazwa wydawnictwa.')
+            self.setError('Pusta nazwa.')
             return
         }
-        if(found_labels.length > 0){
-            self.setError('Wydawnictwo już istnieje.')
+        if(found_genres.length > 0){
+            self.setError('Gatunek już istnieje.')
             return
         }
 
         else{
 
             try {
-                ajaxAction('http://vinyl.dudzinski.com.pl/api/addRecordLabel', 
+                ajaxAction('http://vinyl.dudzinski.com.pl/api/addGenre', 
                     {
                         name: self.state.name
                     }, 
@@ -80,7 +80,7 @@ export default class AddRecordForm extends React.Component {
             response_msg = <ErrorMessage message = "Wystąpił błąd. Spróbuj ponownie." />;    
         }
         else if(is_success){
-            response_msg = <SuccessMessage message = "Gratulacje! Zapisano poprawnie wydawnictwo." />;    
+            response_msg = <SuccessMessage message = "Gratulacje! Zapisano poprawnie gatunek." />;    
         }
         else {      
             response_msg = "";    
@@ -89,12 +89,12 @@ export default class AddRecordForm extends React.Component {
         return(
             <section id="add_label_section" 
             class="modal_body__section">
-                <h3 class="modal_body__header">Dodaj wydawnictwo</h3>
+                <h3 class="modal_body__header">Dodaj gatunek</h3>
                 <div class = "flex_box to_start input_group">
                     <input type="text" 
                         value = {name}
                         onChange={event => setAttr('name', event, this)}
-                        placeholder="Nazwa wydawnictwa" />
+                        placeholder="Nazwa gatunku" />
                         <button class="flex_box__btn btn primary"
                                 onClick={this.setLabel.bind(this)}> Zapisz </button>
                 </div>

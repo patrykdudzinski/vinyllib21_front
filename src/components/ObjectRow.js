@@ -9,7 +9,7 @@ export default class ObjectRow extends React.Component {
     this.state = {
         key: `${props.lp+1}`,
         artist: props.artist,
-		    row_class: (( props.lp+1 == props.active_row ) ? 'active' : '' ),
+		    row_class: (( props.lp === props.active_row ) ? 'active' : '' ),
         name: props.name,
         year: props.year,
         label: props.label,
@@ -18,10 +18,13 @@ export default class ObjectRow extends React.Component {
     
   }
 
+
   render() {
 
     return (
-        <tr row_id = {this.state.key} class = {this.state.row_class} >
+        <tr row_id = {this.state.key} 
+            onClick = {event => this.props.on_click_fn(this.state.key)}
+            class = {this.state.row_class} >
             <td>{this.state.key}</td>
             <td>{this.state.artist}</td>
             <td>{this.state.name}</td>
