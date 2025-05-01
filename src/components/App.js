@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './Header';
 import List from './List';
 import { ajaxAction } from '../Mixins';
-
+import '../App.css';
 
 export default class AppBody extends React.Component {
 
@@ -59,10 +59,12 @@ export default class AppBody extends React.Component {
 
   render() {
     return(
-        <div>
-            <Header name="VinylLib22" setSearch = {this.setSearch} get_list_fn = {this.updateList}></Header>
-            <List list = {this.state.list} ready = {this.state.ready} ></List>
-        </div>
+		<div className="App">
+			<div>
+				<Header name="VinylLib22" setSearch = {this.setSearch} get_list_fn = {this.updateList}></Header>
+				<List list = {this.state.list} ready = {this.state.ready} ></List>
+			</div>
+		</div>
     )
 
   }

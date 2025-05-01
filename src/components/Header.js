@@ -2,72 +2,75 @@ import React from 'react';
 import OptionModal from './OptionModal';
 
 export default class Header extends React.Component {
-    
-  constructor(props) {
 
-    super(props);
-    this.name = props.name;
-    this.state = {
-      modal_shown: false,
-    }
-	  this.closeModal = this.closeModal.bind(this)
-    
-  }
+	constructor(props) {
 
-  showModal(){
-	  this.setState({
-		  modal_shown: true
-	  })
+		super(props);
+		this.name = props.name;
+		this.setSearch = props.setSearch;
+		this.state = {
+			modal_shown: false,
+		}
+		this.closeModal = this.closeModal.bind(this)
 
-  }
+	}
 
-  closeModal() {
-    
-    this.setState({
-		  modal_shown: false
-    })
+	showModal() {
+		this.setState({
+			modal_shown: true
+		})
 
-  }
+	}
 
-  componentDidUpdate(){
-	//   this.getElements();
-	//   this.forceUpdate();
+	closeModal() {
+
+		this.setState({
+			modal_shown: false
+		})
+
+	}
+
+	componentDidUpdate() {
+		//   this.getElements();
+		//   this.forceUpdate();
 	}
 
 
-  render() {
+	render() {
 
-    const { modal_shown } = this.state;
-    var header = this,
-      modal = '';
+		const { modal_shown } = this.state;
+		var header = this,
+			modal = '';
 
-    if(modal_shown){
-      modal = <OptionModal closeModal = {this.closeModal} /> 
-    }
-    else{
-      modal = ''
-    }
+		if (modal_shown) {
+			modal = <OptionModal closeModal={this.closeModal} />
+		}
+		else {
+			modal = ''
+		}
 
-    return (
-        <div>      
-            <header className="App-header">
-                <h1>{this.name}</h1>
-            </header>
-            <section class="flex_box header_toolbar">
-                <div class="flex_box__element">
-                    <input type="text" placeholder="Szukaj po atrybucie..." onChange = {event => header.props.setSearch(event) } class="flex_box__input" />
-                    <button id="find_btn" class="flex_box__btn btn primary" onClick = {header.props.get_list_fn}> Szukaj </button>
-                    <button class="flex_box__btn btn success"> PDF </button>
-                </div>
-                <div class="flex_box__element header__btn" onClick={header.showModal.bind(this)} > 
-					<h3>Opcje</h3> 
-				</div>
-            </section>
-			{ modal }
-        </div>
+		return (
+			<div>
+				<header className="App-header">
+					<h1>{this.name}</h1>
+				</header>
+				{this.setSearch ? (
+					<section class="flex_box header_toolbar">
+						<div class="flex_box__element">
+							<input type="text" placeholder="Szukaj po atrybucie..." onChange={event => header.props.setSearch(event)} class="flex_box__input" />
+							<button id="find_btn" class="flex_box__btn btn primary" onClick={header.props.get_list_fn}> Szukaj </button>
+							<button class="flex_box__btn btn success"> PDF </button>
+						</div>
+						<div class="flex_box__element header__btn" onClick={header.showModal.bind(this)} >
+							<h3>Opcje</h3>
+						</div>
+					</section>
+				) : null}
+				{modal}
+			</div>
 
-    );
+		);
 
-  }
+	}
 
 }

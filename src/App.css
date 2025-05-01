@@ -35,10 +35,19 @@
 	color: var(--app-black);
   }
 
+.hidden {
+	display: none;
+}
+
 .flex_box{
   display: flex;
   padding: 5px 30px;
   justify-content: space-between;
+}
+
+.flex_box.column{
+  display: flex;
+  flex-direction: column;
 }
 
 .flex_box__input,
@@ -71,6 +80,11 @@
 	max-width: 5em;
 }
 
+.error_label {
+	font-weight: 600;
+}
+
+.error_label,
 .error_message h4{
 	color: var(--app-red);
 }
@@ -223,4 +237,24 @@ table tbody tr.active{
 .table__list td,
 .table__list th{
 	padding: 10px;
+}
+
+/** Login ***/
+
+.login-form__input {
+	margin: 10px auto;
+	width: 25%;
+	padding: 10px 80px;
+	border-radius: 0px;
+	outline: none;
+	border: #fff;
+	border-bottom: 1px solid var(--dark-secondary);
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.login-form__btn {
+	font-size: 1.3em;
+	width: 30%;
+	margin: 10px auto;
 }
