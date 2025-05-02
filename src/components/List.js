@@ -60,7 +60,7 @@ export default class List extends keyCodeHandler{
 		let toggle_active = this.toggleActive;
 
 		return (
-			<div>      
+			<div id="list-wrapper">      
 				<h2 class="table__heading"> Lista winyli </h2>
 				<table class="table__list">
 					<thead>

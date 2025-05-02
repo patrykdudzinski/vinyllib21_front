@@ -13,7 +13,7 @@ function LoginPage({ onLogin }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        ajaxAction('http://vinyl.dudzinski.com.pl/api/login', 
+        ajaxAction('/api/login', 
             {
                 login: login,
                 password: password
