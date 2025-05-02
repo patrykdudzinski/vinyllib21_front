@@ -8,6 +8,7 @@
 
 :root{
 	--dark_primary: #4B244A;
+	--dark-primary-new: #341735;
 	--dark-secondary: #332C23;
 	--secondary: #533A7B;
 	--light: #98C1D9;
@@ -119,7 +120,7 @@
 /**** HEADER ******/
 
 .App-header {
-  background-color: #4B244A;
+  background-color: var(--dark-primary-new);
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -127,6 +128,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+#logo {
+	max-height: 30vh;
 }
 
 .header_toolbar{

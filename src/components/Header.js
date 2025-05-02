@@ -1,6 +1,6 @@
 import React from 'react';
 import OptionModal from './OptionModal';
-
+import logo from '../vinliblogo.png'
 export default class Header extends React.Component {
 
 	constructor(props) {
@@ -52,7 +52,8 @@ export default class Header extends React.Component {
 		return (
 			<div>
 				<header className="App-header">
-					<h1>{this.name}</h1>
+					{/* <h1>{this.name}</h1> */}
+					<img id="logo" src={logo} />
 				</header>
 				{this.setSearch ? (
 					<section class="flex_box header_toolbar">
