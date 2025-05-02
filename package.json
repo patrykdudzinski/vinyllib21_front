@@ -38,6 +38,5 @@
   },
   "devDependencies": {
     "mini-css-extract-plugin": "2.4.5"
-  },
-  "proxy" : "https://vinyl.dudzinski.com.pl/"
+  }
 }
