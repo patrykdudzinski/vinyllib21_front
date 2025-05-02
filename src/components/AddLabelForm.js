@@ -41,7 +41,7 @@ export default class AddRecordForm extends React.Component {
         else{
 
             try {
-                ajaxAction('http://vinyl.dudzinski.com.pl/api/addRecordLabel', 
+                ajaxAction(`${process.env.REACT_APP_API_URL}/api/addRecordLabel`, 
                     {
                         name: self.state.name
                     }, 

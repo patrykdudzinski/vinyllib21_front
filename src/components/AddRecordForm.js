@@ -27,7 +27,7 @@ export default class AddRecordForm extends React.Component {
             error: false
         })
         try {
-            ajaxAction('http://vinyl.dudzinski.com.pl/api/addToLibrary', 
+            ajaxAction(`${process.env.REACT_APP_API_URL}/api/addToLibrary`, 
                 {
                     name: self.state.name, 
                     artist: self.state.artist, 

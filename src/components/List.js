@@ -1,7 +1,6 @@
 import React from 'react';
 import ObjectRow from './ObjectRow';
 import keyCodeHandler from './keyCodeHandler';
-import { ajaxAction } from '../Mixins';
 
 export default class List extends keyCodeHandler{
 

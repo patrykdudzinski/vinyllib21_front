@@ -29,7 +29,7 @@ export default class AppBody extends React.Component {
 			ready: false
 		})
 		
-		ajaxAction('http://vinyl.dudzinski.com.pl/api/library', {} )
+		ajaxAction(`${process.env.REACT_APP_API_URL}/api/library`, {} )
 			.then(data => {
 				if(app.state.search.length > 0){
 					data = data.filter(element => element.name.includes(app.state.search) || element.artist.includes(app.state.search) )

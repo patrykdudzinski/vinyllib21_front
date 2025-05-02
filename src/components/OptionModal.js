@@ -21,7 +21,7 @@ export default class OptionModal extends React.Component {
         app.setState({
             ready: false
         })
-        ajaxAction('http://vinyl.dudzinski.com.pl/api/getGenres', {} )
+        ajaxAction(`${process.env.REACT_APP_API_URL}/api/getGenres`, {} )
         .then(data => {
             app.setState({
                 genres_list: data,
@@ -32,7 +32,7 @@ export default class OptionModal extends React.Component {
 
     getLabelsList(){
         var app = this;
-        ajaxAction('http://vinyl.dudzinski.com.pl/api/getLabels', {} )
+        ajaxAction(`${process.env.REACT_APP_API_URL}/api/getLabels`, {} )
         .then(data => {
             app.setState({
                 labels_list: data,

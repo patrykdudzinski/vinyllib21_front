@@ -41,7 +41,7 @@ export default class AddGenreForm extends React.Component {
         else{
 
             try {
-                ajaxAction('http://vinyl.dudzinski.com.pl/api/addGenre', 
+                ajaxAction(`${process.env.REACT_APP_API_URL}/api/addGenre`, 
                     {
                         name: self.state.name
                     }, 
